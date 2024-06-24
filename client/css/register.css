@@ -1,0 +1,20 @@
+.completed-task {
+    text-decoration: line-through; /* Ligne rayée pour les tâches validées */
+    color: #6B7280; /* Couleur de texte grise pour les tâches terminées */
+    transition: text-decoration 0.3s ease; /* Animation de transition */
+}
+
+
+
+/* Animation de la checkbox */
+input[type="checkbox"] {
+    transition: transform 0.3s ease;
+}
+
+/* Appliquer un effet d'échelle lorsqu'elle est cochée */
+input[type="checkbox"]:checked {
+    transform: scale(1.1);
+}
+
+
+
