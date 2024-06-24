@@ -16,39 +16,51 @@ registerForm.addEventListener('submit', async (e) => {
 
     //Vérification de la saisie des inputs
     if (!validateRegistrationForm(username, email, password, passwordConfirm)) {
-        alert('Veuillez valider toutes les tâches');
+        document.getElementById('usernameError').textContent = username.trim() === '' ? 'La tâche "Username" doit être validée' : '';
+        document.getElementById('emailError').textContent = email.trim() === '' ? 'La tâche "Email" doit être validée' : '';
+        document.getElementById('passwordError').textContent = password.trim() === '' ? 'La tâche "Mot de passe" doit être validée' : '';
+        document.getElementById('passwordConfirmError').textContent = passwordConfirm.trim() === '' ? 'La tâche "Confirmation mot de passe" doit être validée' : '';
         return;
     }
 
+
+    // Réinitialisation des messages d'erreur
+    document.getElementById('usernameError').textContent = '';
+    document.getElementById('emailError').textContent = '';
+    document.getElementById('passwordError').textContent = '';
+    document.getElementById('passwordConfirmError').textContent = '';
+
+
     //Vérification du nom d'utilisateur
     const usernameValidation = validateUsername(username);
-    if(!usernameValidation.isValid) {
-        alert(usernameValidation.errorMessage);
+    if (!usernameValidation.isValid) {
+        document.getElementById('usernameError').textContent = usernameValidation.errorMessage;
         return;
     }
 
     //Vérification du format de l'email
     const emailValidation = validateEmail(email);
-    if(!emailValidation.isValid) {
-        alert(emailValidation.errorMessage);
+    if (!emailValidation.isValid) {
+        document.getElementById('emailError').textContent = emailValidation.errorMessage;
         return;
     }
 
     //Vérification de la force de mot de passe
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
-        alert(passwordValidation.errorMessage);
+        document.getElementById('passwordError').textContent = passwordValidation.errorMessage;
         return;
     }
 
     //Vérifie si les mots de passe correspondent
-    if(!passwordsMatch(password, passwordConfirm)) {
-        alert('Les mots de passe ne correspondent pas.');
+    if (!passwordsMatch(password, passwordConfirm)) {
+        document.getElementById('passwordConfirmError').textContent = 'Les mots de passe ne correspondent pas.';
         return;
     }
 
 
-    try {
+     // Si tout est valide, envoyer les données au serveur
+     try {
         const response = await fetch('http://localhost:3000/api/register', {
             method: 'POST',
             headers: {
@@ -70,13 +82,12 @@ registerForm.addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('Error:', error);
         if (error.message.includes('Un compte existe déjà avec cette adresse email.')) {
-            alert('Un compte existe déjà avec cette adresse email.');
+            document.getElementById('emailError').textContent = 'Un compte existe déjà avec cette adresse email.';
         } else {
-            alert('Une erreur est survenue lors de l\'inscription.');
+            document.getElementById('emailError').textContent = 'Une erreur est survenue lors de l\'inscription.';
         }
     }
 });
-
 
 
 

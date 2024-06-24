@@ -4,6 +4,10 @@
     transition: text-decoration 0.3s ease; /* Animation de transition */
 }
 
+.text-red-500 {
+    color: #dc3545; /* Rouge */
+}
+
 
 
 /* Animation de la checkbox */
