@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List App</title>
+    <title>TO-DOUM Inscription</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
 </head>
 
     <body class="bg-cover bg-no-repeat" style="background-image: url('src/images/backgound_register_page.png');">
-        <div class=""></div>
+        <p id="newRegister" class="text-white text-sm italic bold pt-2 pb-2 font-bold bac bg-green-500  flex flex-row justify-center items-center hidden"></p>
 
         
         <div class="container flex flex-col items-center mx-auto " style="user-select: none;"> 
 
             <!--Commencement du formulaire d'inscritption-->
-            <form id="registerForm" class="max-w-md bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-full mt-28" style="background-image: url('src/images/background_paper_register.jpg')">
+            <form id="registerForm" class="max-w-md bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-full mt-20" style="background-image: url('src/images/background_paper_register.jpg')">
 
                 <h2 class="text-3xl font-bold mt-2 flex justify-center">TO-DOUM</h2>
                 <h1 class="text-4xl font-bold mt-2 mb-10 flex justify-center">Inscription</h1>
@@ -25,13 +25,13 @@
 
                 <!--Classe pour jaouter un séparateur entre chaque input field-->
                 <div class="divide-y-2 divide-gray-400">
-
-                    <!--INPUT USERNAME-->
+                            
+                      <!--INPUT USERNAME-->
                     <div class="mb-4 ">
 
                         <!--Label pour l'input unsername-->
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            Username
+                            Nom d'utilisateur
                         </label>
 
                         <!--Classe pour aligner la checkbox avec l'input field -->
@@ -43,7 +43,7 @@
                             </div>
 
                             <!--Input field-->
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" data-checkbox-id="usernameCheckbox">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " id="username" type="text" placeholder="Nom d'utilisateur" data-checkbox-id="usernameCheckbox" data-placeholder="Nom d'utilisateur">
                             
                         </div>
 
@@ -71,7 +71,7 @@
                             </div>
                             
                             <!--Input field-->
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" data-checkbox-id="emailCheckbox">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" data-checkbox-id="emailCheckbox" data-placeholder="Email">
                             
                         </div>
 
@@ -99,7 +99,7 @@
                             </div>
                             
                             <!--Input field-->
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Mot de passe" data-checkbox-id="passwordCheckbox">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Mot de passe" data-checkbox-id="passwordCheckbox" data-placeholder="Mot de passe">
                             
                         </div>
 
@@ -128,7 +128,7 @@
                             </div>
                             
                             <!--Input field-->
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordConfirm" type="password" placeholder="Mot de passe" data-checkbox-id="passwordConfirmCheckbox">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordConfirm" type="password" placeholder="Mot de passe" data-checkbox-id="passwordConfirmCheckbox" data-placeholder="Mot de passe">
                             
                         </div>
 
@@ -140,9 +140,10 @@
 
 
                     <div class="flex items-center justify-between pt-8">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                            Register
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            S'inscrire
                         </button>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm text-center mr-8">Vous avez déjà un compte ? <br><a href="pages/login.html" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Connectez-vous.</a></p>
                     </div>
 
                 </div>

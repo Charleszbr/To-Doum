@@ -1,4 +1,6 @@
+/////////////////////////////////////////////////////////////
 // Fonction pour vérifier si tous les champs sont remplis
+/////////////////////////////////////////////////////////////
 export function validateRegistrationForm(username, email, password, passwordConfirm) {
     if (username.trim() === '' || email.trim() === '' || password.trim() === '' || passwordConfirm.trim() === '') {
         return false;
@@ -8,17 +10,19 @@ export function validateRegistrationForm(username, email, password, passwordConf
 
 
 
-//Validation du nom d'utilisateur + gestion d'erreur
+/////////////////////////////////////////////////////////////
+// Validation du nom d'utilisateur + gestion d'erreur
+/////////////////////////////////////////////////////////////
 export function validateUsername(username) {
     const minLength = 3;
     const maxLength = 15;
 
     if (username.length < minLength) {
-        return { isValid: false, errorMessage: `Le nom d'utilisateur doit contenir au minimum ${minLength} caractères.` };
+        return { isValid: false, errorMessage: `Le nom d'utilisateur doit contenir minimum ${minLength} caractères.` };
     }
 
     if (username.length > maxLength) {
-        return { isValid: false, errorMessage: `Le nom d'utilisateur doit contenir maximum ${maxLength} caractères.` }
+        return { isValid: false, errorMessage: `Le nom d'utilisateur doit contenir maximum ${maxLength} caractères.` };
     };
 
     
@@ -32,7 +36,9 @@ export function validateUsername(username) {
 
 
 
+/////////////////////////////////////////////////////////////
 // Fonction pour valider le format de l'email + gestion d'erreur
+/////////////////////////////////////////////////////////////
 export function validateEmail(email) {
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(email)) {
@@ -44,7 +50,9 @@ export function validateEmail(email) {
 
 
 
-//Fonction pour valider le mot de passe
+/////////////////////////////////////////////////////////////
+// Fonction pour valider le mot de passe + gestion d'erreur
+/////////////////////////////////////////////////////////////
 export function validatePassword(password) {
 
     if (!/^.{8,60}$/.test(password)) {
@@ -69,10 +77,43 @@ export function validatePassword(password) {
 
 
 
-
-//Fonction pour vérifier si les mots de passe correspondent
+/////////////////////////////////////////////////////////////
+// Fonction pour vérifier si les mots de passe correspondent
+/////////////////////////////////////////////////////////////
 export function passwordsMatch(password, passwordConfirm) {
     return password === passwordConfirm;
 }
 
 
+
+/////////////////////////////////////////////////////////////
+// Fonction pour afficher les erreurs
+/////////////////////////////////////////////////////////////
+export function showError(inputElement, errorElementId, errorMessage) {
+    const errorElement = document.getElementById(errorElementId);
+    errorElement.textContent = errorMessage;
+    errorElement.style.display = 'block';
+    inputElement.classList.add('error-input');
+}
+
+
+
+
+/////////////////////////////////////////////////////////////
+// Fonction pour supprimer les erreurs
+/////////////////////////////////////////////////////////////
+export function clearErrors() {
+    document.querySelectorAll('.error-message').forEach(errorElement => {
+        errorElement.style.display = 'none';
+        errorElement.textContent = '';
+    });
+    document.querySelectorAll('input').forEach(inputElement => {
+        inputElement.classList.remove('error-input');
+    });
+
+    // Masque tous les messages d'erreur
+    document.getElementById('usernameError').style.display = 'none';
+    document.getElementById('emailError').style.display = 'none';
+    document.getElementById('passwordError').style.display = 'none';
+    document.getElementById('passwordConfirmError').style.display = 'none';
+}

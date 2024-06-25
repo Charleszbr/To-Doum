@@ -16,6 +16,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+
 // Connexion à MongoDB
 mongoose.connect('mongodb://localhost:27017/TO-DOUM', {
     useNewUrlParser: true,
@@ -26,6 +27,7 @@ mongoose.connect('mongodb://localhost:27017/TO-DOUM', {
     console.error('Erreur de connexion à MongoDB', err);
 });
 
+
 // Définir le schéma de l'utilisateur
 const userSchema = new mongoose.Schema({
     username: String,
@@ -33,13 +35,16 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
+
 // Créer un modèle à partir du schéma
 const User = mongoose.model('User', userSchema);
+
 
 // Route GET par défaut
 app.get('/', (req, res) => {
     res.send('Bienvenue sur le serveur API');
 });
+
 
 // Définir le point de terminaison POST /api/register
 app.post('/api/register', async (req, res) => {
@@ -66,11 +71,13 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
+
 // Gestion des erreurs globales
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ message: 'Une erreur est survenue sur le serveur' });
 });
+
 
 // Démarrer le serveur
 app.listen(port, () => {
