@@ -18,20 +18,10 @@ Ce projet comprendra les composants suivants :
 - **Front-end** :
   - HTML/CSS pour la structure et le style de la page.
   - JavaScript pour les interactions dynamiques.
-  - [Framework front-end spécifique si nécessaire peut être Vue.js ou encore Angular]
 
 - **Back-end** :
-  - [Langage de programmation pour le serveur surement Node.js]
-  - [Framework de back-end, je pense nottamment à Express]
+  - Langage server Node.js
+  - Framework Express 
 
 - **Base de Données** :
-  - [Type de base de données soit MySQL ou bien MongoDB]
-
-## Installation et Configuration
-### Prérequis
-- Node.js
-
-### Étapes d'installation
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/Charleszbr/to-doum.git
+  - MongoDB, MondoDB Compass
