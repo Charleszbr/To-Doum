@@ -1,15 +1,19 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+// Register.js - Code de la page register - formulaire d'inscription 
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
 /////////////////////////////////////////////////////////////
-// Register.js - Code de la page register 
+// Avant remplissage du formulaire
 /////////////////////////////////////////////////////////////
 
-//Importe les fonctions depuis functions.js
+// Import des fonctions depuis functions.js
 import { showError, clearErrors, validateUsername, validateEmail, passwordsMatch, validateRegistrationForm, validatePassword } from './functions.js';
 
-
-//Récupération de l'id dur formulaire d'inscription
+// Récupération de l'id dur formulaire d'inscription
 const registerForm = document.getElementById('registerForm');
 
-//Listener pour réinitialiser le placeholder et la classe d'erreur au focus
+// Listener pour réinitialiser le placeholder et la classe d'erreur au focus de l'input (click)
 document.querySelectorAll('input').forEach(input => {
     input.addEventListener('focus', function() {
         this.placeholder = this.getAttribute('data-placeholder');
@@ -19,25 +23,31 @@ document.querySelectorAll('input').forEach(input => {
 
 
 
-registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); 
+/////////////////////////////////////////////////////////////
+// Actions liées au remplissage du formulaire 
+/////////////////////////////////////////////////////////////
 
-    //Récupération des inputs
+// Ajout d'un écouteur d'événement pour le bouton 'submit'
+registerForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Empêcher le rechargement de la page
+
+    //Réinitialisation des messages d'erreur et des classes d'erreur
+    clearErrors();
+
+    // Récupération des inputs
     const usernameInput = document.getElementById('username');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const passwordConfirmInput = document.getElementById('passwordConfirm');
 
-    //Récupération valeur des inputs
+    // Récupération valeur des inputs
     const username = usernameInput.value;
     const email = emailInput.value;
     const password = passwordInput.value;
     const passwordConfirm = passwordConfirmInput.value;
 
-    //Réinitialisation des messages d'erreur et des classes d'erreur
-    clearErrors();
 
-    //Vérification de la saisie des inputs
+    // Vérification de la saisie des inputs
     if (!validateRegistrationForm(username, email, password, passwordConfirm)) {
         if (username.trim() === '') {
             showError(usernameInput, 'usernameError', 'La tâche "Nom d\'utilisateur" doit être validée');
@@ -55,31 +65,28 @@ registerForm.addEventListener('submit', async (e) => {
     }
 
 
-
-    //Vérification du nom d'utilisateur
+    //Vérification du nom d'utilisateur + gestion erreur
     const usernameValidation = validateUsername(username);
     if (!usernameValidation.isValid) {
         showError(usernameInput, 'usernameError', usernameValidation.errorMessage);
         return;
     }
 
-
-    //Vérification du format de l'email
+    //Vérification du format de l'email + gestion erreur
     const emailValidation = validateEmail(email);
     if (!emailValidation.isValid) {
         showError(emailInput, 'emailError', emailValidation.errorMessage);
         return;
     }
 
-    // Vérification de la force du mot de passe
+    // Vérification de la force du mot de passe + gestion erreur
     const passwordValidation = validatePassword(password);
     if (!passwordValidation.isValid) {
         showError(passwordInput, 'passwordError', passwordValidation.errorMessage);
         return;
     }
 
-
-    //Vérification de la correspondance des mots de passe
+    //Vérification de la correspondance des mots de passe + gestion erreur
     if (!passwordsMatch(password, passwordConfirm)) {
         showError(passwordConfirmInput, 'passwordConfirmError', 'Les mots de passe ne correspondent pas.');
         return;
@@ -88,8 +95,9 @@ registerForm.addEventListener('submit', async (e) => {
 
 
 
-    //Envoie des données au serveur si tout est valide
+    // Envoi des données au serveur si tout est valide
     try {
+
         const response = await fetch('http://localhost:3000/api/register', {
             method: 'POST',
             headers: {
@@ -111,10 +119,10 @@ registerForm.addEventListener('submit', async (e) => {
         newRegister.textContent = 'L\'enregistrement a été fait avec succès. Au boulot ! Les tâches ne vont pas se faire toutes seules !';
         newRegister.classList.remove('hidden');
 
-        // Ajout d'un délai de 3 secondes avant la redirection
+        // Ajout d'un délai avant la redirection
         setTimeout(function () {
             window.location.href = 'pages/login.html';
-        }, 3000); // 3000 millisecondes (3 secondes)
+        }, 3000); // 3sec
 
     } catch (error) {
         console.error('Error:', error);
@@ -126,14 +134,20 @@ registerForm.addEventListener('submit', async (e) => {
             showError(emailInput, 'emailError', 'Une erreur est survenue lors de l\'inscription.');
         }
     }
+
 });
 
 
 
+/////////////////////////////////////////////////////////////
+// Animation style todo-list (complétion d'une tâche)
+/////////////////////////////////////////////////////////////
 
-//Ecouteurs d'événements pour détecter le blur sur les champs de saisie
 const inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
+
 inputs.forEach(input => {
+
+    // Ecouteur d'événement pour détecter le blur sur les champs de saisie (cliquer ailleurs une fois l'input rempli)
     input.addEventListener('blur', function () {
         const checkboxId = this.getAttribute('data-checkbox-id');
         const checkbox = document.getElementById(checkboxId);
@@ -148,10 +162,13 @@ inputs.forEach(input => {
                 this.classList.add('completed-task'); // Ajouter la classe de ligne rayée
             }
         }
+
     });
 
-    //Ajout d'un écouteur d'événement pour détecter les clics sur l'input après le blur
+
+    // Ecouteur d'évennement pour détecter le focus sur l'input après avoir cliquer ailleurs
     input.addEventListener('click', function () {
+
         const checkboxId = this.getAttribute('data-checkbox-id');
         const checkbox = document.getElementById(checkboxId);
 
@@ -159,7 +176,9 @@ inputs.forEach(input => {
             checkbox.checked = false;
             this.classList.remove('completed-task');
         }
+
     });
+    
 });
 
 

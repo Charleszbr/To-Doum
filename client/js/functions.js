@@ -1,3 +1,8 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+// Script js pour les fonctions qui vont servir dans les différents scripts
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
 /////////////////////////////////////////////////////////////
 // Fonction pour vérifier si tous les champs sont remplis
 /////////////////////////////////////////////////////////////
@@ -7,6 +12,8 @@ export function validateRegistrationForm(username, email, password, passwordConf
     }
     return true;
 }
+
+
 
 /////////////////////////////////////////////////////////////
 // Validation du nom d'utilisateur + gestion d'erreur
@@ -31,6 +38,8 @@ export function validateUsername(username) {
     return { isValid: true, errorMessage : '' };
 }
 
+
+
 /////////////////////////////////////////////////////////////
 // Fonction pour valider le format de l'email + gestion d'erreur
 /////////////////////////////////////////////////////////////
@@ -42,6 +51,8 @@ export function validateEmail(email) {
         return { isValid: true, errorMessage: '' };
     }
 }
+
+
 
 /////////////////////////////////////////////////////////////
 // Fonction pour valider le mot de passe + gestion d'erreur
@@ -66,12 +77,16 @@ export function validatePassword(password) {
     return { isValid:true, errorMessage: ''};
 }
 
+
+
 /////////////////////////////////////////////////////////////
 // Fonction pour vérifier si les mots de passe correspondent
 /////////////////////////////////////////////////////////////
 export function passwordsMatch(password, passwordConfirm) {
     return password === passwordConfirm;
 }
+
+
 
 /////////////////////////////////////////////////////////////
 // Fonction pour afficher les erreurs
@@ -82,6 +97,8 @@ export function showError(inputElement, errorElementId, errorMessage) {
     errorElement.style.display = 'block';
     inputElement.classList.add('error-input');
 }
+
+
 
 /////////////////////////////////////////////////////////////
 // Fonction pour supprimer les erreurs
@@ -115,6 +132,8 @@ export function toggleLoadingState(isLoading) {
     submitButton.disabled = isLoading;
     submitButton.textContent = isLoading ? 'Connexion en cours...' : 'Se connecter';
 }
+
+
 
 /////////////////////////////////////////////////////////////
 // Fonction pour ajouter un délai
