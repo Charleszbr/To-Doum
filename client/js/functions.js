@@ -87,20 +87,25 @@ export function showError(inputElement, errorElementId, errorMessage) {
 // Fonction pour supprimer les erreurs
 /////////////////////////////////////////////////////////////
 export function clearErrors() {
-    document.querySelectorAll('.error-message').forEach(errorElement => {
-        errorElement.style.display = 'none';
-        errorElement.textContent = '';
-    });
-    document.querySelectorAll('input').forEach(inputElement => {
-        inputElement.classList.remove('error-input');
+    // Tableau des IDs des messages d'erreur à masquer
+    const errorIds = ['usernameError', 'emailError', 'passwordError', 'passwordConfirmError'];
+
+    // Masque tous les messages éléments d'erreur
+    errorIds.forEach(errorId => {
+        const errorElement = document.getElementById(errorId);
+        if (errorElement) {
+            errorElement.style.display = 'none';
+            errorElement.textContent = '';
+        }
     });
 
-    // Masque tous les messages d'erreur
-    document.getElementById('usernameError').style.display = 'none';
-    document.getElementById('emailError').style.display = 'none';
-    document.getElementById('passwordError').style.display = 'none';
-    document.getElementById('passwordConfirmError').style.display = 'none';
+    // Désélectionne tous les inputs ayant la classe 'error-input'
+    document.querySelectorAll('input.error-input').forEach(inputElement => {
+        inputElement.classList.remove('error-input');
+        inputElement.classList.add('error-input::placeholder');
+    });
 }
+
 
 /////////////////////////////////////////////////////////////
 // Fonction pour désactiver le bouton de soumission et activer celui de loading

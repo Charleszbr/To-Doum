@@ -14,17 +14,13 @@ document.querySelectorAll('input').forEach(input => {
     input.addEventListener('focus', function() {
         this.placeholder = this.getAttribute('data-placeholder');
         this.classList.remove('error-input');
-        const errorElementId = this.getAttribute('data-error-id');
-        const errorElement = document.getElementById(errorElementId);
-        errorElement.style.display = 'none';
-        errorElement.textContent = '';
     });
 });
 
 
 
 registerForm.addEventListener('submit', async (e) => {
-    e.preventDefault(); //Supprimer le rechargement de la page
+    e.preventDefault(); 
 
     //Récupération des inputs
     const usernameInput = document.getElementById('username');
@@ -40,8 +36,6 @@ registerForm.addEventListener('submit', async (e) => {
 
     //Réinitialisation des messages d'erreur et des classes d'erreur
     clearErrors();
-    
-
 
     //Vérification de la saisie des inputs
     if (!validateRegistrationForm(username, email, password, passwordConfirm)) {
