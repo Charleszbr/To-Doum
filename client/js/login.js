@@ -1,5 +1,5 @@
 // Import des fonctions de validation depuis functions.js
-import { validateEmail, validatePassword } from './functions.js';
+import { validateEmail, validatePassword, toggleLoadingState, delay } from './functions.js';
 
 // Récupération de l'id du formulaire de connexion
 const loginForm = document.getElementById('loginForm');
@@ -37,6 +37,10 @@ loginForm.addEventListener('submit', async (e) => {
         return;
     }
 
+    
+    // Désactiver le bouton de soumission et afficher un indicateur de chargement
+    toggleLoadingState(true);
+
     // Envoi des données au serveur si tout est valide
     try {
         const response = await fetch('http://localhost:3000/api/login', {
@@ -48,40 +52,38 @@ loginForm.addEventListener('submit', async (e) => {
         });
 
         if (!response.ok) {
-            throw new Error('Identifiants incorrects.');
+            throw new Error('Erreur lors de la connexion');
         }
 
-        // Réponse réussie
         const data = await response.json();
-        console.log(data);
+        console.log(data); // Assurez-vous que cela affiche les données correctes
 
-        // Redirection vers la page d'accueil après connexion réussie
-        setTimeout(function() {
-            window.location.href = 'accueil.html'; // Changer 'accueil.html' par la page de redirection souhaitée
-        }, 3000); // Délai de 3 secondes avant la redirection
+        // Afficher le message de réussite et masquer les erreurs
+        const newRegister = document.getElementById('newLogin');
+        newRegister.textContent = 'Connexion réussie';
+        newRegister.classList.remove('hidden');
 
+
+        // Ajout d'un délai de 2 secondes avant la redirection
+        await delay(2000);
+        window.location.href = 'pages/accueil.html';
     } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('emailError').textContent = 'Identifiants incorrects.';
+        console.error('Erreur:', error.message);
+    } finally {
+        // Réinitialiser l'état de chargement après la requête
+        toggleLoadingState(false);
     }
 });
 
 // Ajout d'un écouteur d'événements pour détecter le blur sur les champs de saisie
 const inputs = document.querySelectorAll('input[type="email"], input[type="password"]');
 inputs.forEach(input => {
-    input.addEventListener('blur', function() {
+    input.addEventListener('blur', function () {
         this.classList.remove('completed-task'); // Retirer la classe de ligne rayée
     });
 
     // Ajout d'un écouteur d'événement pour détecter les clics sur l'input après le blur
-    input.addEventListener('click', function() {
-        this.classList.remove('completed-task'); // Retirer la classe de ligne rayée
-    });
-});
-
-
-    // Ajout d'un écouteur d'événement pour détecter les clics sur l'input après le blur
-    input.addEventListener('click', function() {
+    input.addEventListener('click', function () {
         const checkboxId = this.getAttribute('data-checkbox-id');
         const checkbox = document.getElementById(checkboxId);
 
@@ -91,5 +93,3 @@ inputs.forEach(input => {
         }
     });
 });
-
-

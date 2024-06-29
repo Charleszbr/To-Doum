@@ -110,7 +110,7 @@ registerForm.addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        console.log(data);
+        console.log(data); 
 
         // Petit message d'inscription validée
         const newRegister = document.getElementById('newRegister');

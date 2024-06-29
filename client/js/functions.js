@@ -8,8 +8,6 @@ export function validateRegistrationForm(username, email, password, passwordConf
     return true;
 }
 
-
-
 /////////////////////////////////////////////////////////////
 // Validation du nom d'utilisateur + gestion d'erreur
 /////////////////////////////////////////////////////////////
@@ -25,7 +23,6 @@ export function validateUsername(username) {
         return { isValid: false, errorMessage: `Le nom d'utilisateur doit contenir maximum ${maxLength} caractères.` };
     };
 
-    
     const usernameRegex = /^[a-zA-Z0-9_-]+$/;
     if (!usernameRegex.test(username)) {
         return { isValid: false, errorMessage: 'Le nom d\'utilisateur ne peut contenir que des lettres, des chiffres, - et _.' };
@@ -33,8 +30,6 @@ export function validateUsername(username) {
 
     return { isValid: true, errorMessage : '' };
 }
-
-
 
 /////////////////////////////////////////////////////////////
 // Fonction pour valider le format de l'email + gestion d'erreur
@@ -48,13 +43,10 @@ export function validateEmail(email) {
     }
 }
 
-
-
 /////////////////////////////////////////////////////////////
 // Fonction pour valider le mot de passe + gestion d'erreur
 /////////////////////////////////////////////////////////////
 export function validatePassword(password) {
-
     if (!/^.{8,60}$/.test(password)) {
         return { isValid: false, errorMessage: 'Le mot de passe doit contenir entre 8 et 60 caractères' };
     }
@@ -71,11 +63,8 @@ export function validatePassword(password) {
         return { isValid: false, errorMessage: 'Le mot de passe doit contenir au moins un caractère spécial (@$!%*?&)' };
     } 
 
-    
     return { isValid:true, errorMessage: ''};
 }
-
-
 
 /////////////////////////////////////////////////////////////
 // Fonction pour vérifier si les mots de passe correspondent
@@ -83,8 +72,6 @@ export function validatePassword(password) {
 export function passwordsMatch(password, passwordConfirm) {
     return password === passwordConfirm;
 }
-
-
 
 /////////////////////////////////////////////////////////////
 // Fonction pour afficher les erreurs
@@ -95,9 +82,6 @@ export function showError(inputElement, errorElementId, errorMessage) {
     errorElement.style.display = 'block';
     inputElement.classList.add('error-input');
 }
-
-
-
 
 /////////////////////////////////////////////////////////////
 // Fonction pour supprimer les erreurs
@@ -116,4 +100,20 @@ export function clearErrors() {
     document.getElementById('emailError').style.display = 'none';
     document.getElementById('passwordError').style.display = 'none';
     document.getElementById('passwordConfirmError').style.display = 'none';
+}
+
+/////////////////////////////////////////////////////////////
+// Fonction pour désactiver le bouton de soumission et activer celui de loading
+/////////////////////////////////////////////////////////////
+export function toggleLoadingState(isLoading) {
+    const submitButton = document.querySelector('button[type="submit"]');
+    submitButton.disabled = isLoading;
+    submitButton.textContent = isLoading ? 'Connexion en cours...' : 'Se connecter';
+}
+
+/////////////////////////////////////////////////////////////
+// Fonction pour ajouter un délai
+/////////////////////////////////////////////////////////////
+export function delay(duration) {
+    return new Promise(resolve => setTimeout(resolve, duration));
 }
