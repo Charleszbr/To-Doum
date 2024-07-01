@@ -12,51 +12,44 @@
     <link rel="stylesheet" href="css/register.css">
 </head>
 
-<body class="bg-cover bg-no-repeat" style="background-image: url('src/images/backgound_register_page.png');">
+<body class="bg-cover bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('src/images/backgound_register_page.png');">
 
-    <!-- Div pour afficher un message d'incription réussie -->
-    <p id="newRegister" class="text-white text-sm italic bold pt-2 pb-2 font-bold bac bg-green-500 flex flex-row justify-center items-center hidden"> 
+    <!-- Div pour afficher un message d'inscription réussie -->
+    <p id="newRegister" class="text-white text-sm italic font-bold pt-2 pb-2 bg-green-500 flex justify-center items-center hidden w-full"> 
         <!-- Le contenu sera généré par javascript register.js -->
     </p>
 
-    <div class="container flex flex-col items-center mx-auto " style="user-select: none;">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Formulaire d'inscritption -->
-        <form id="registerForm" class="max-w-md bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 w-full mt-20" style="background-image: url('src/images/background_paper_register.jpg')">
+        <!-- Formulaire d'inscription -->
+        <form id="registerForm" class="max-w-lg bg-white shadow-md rounded-xl px-8 pt-6 pb-8 w-full mx-auto mt-10 sm:mt-20" style="background-image: url('src/images/background_paper_register.jpg')">
 
-            <h2 class="text-3xl font-bold mt-2 flex justify-center">TO-DOUM</h2>
-            <h1 class="text-4xl font-bold mt-2 mb-10 flex justify-center">Inscription</h1>
-            <h3 class="text-2xl font-bold mb-4 ">Validez ces tâches :</h3>
+            <h2 class="text-3xl font-bold mt-2 text-center">TO-DOUM</h2>
+            <h1 class="text-4xl font-bold mt-2 mb-10 text-center">Inscription</h1>
+            <h3 class="text-2xl font-bold mb-4">Validez ces tâches :</h3>
 
-            <!-- Classe pour jaouter un séparateur entre chaque input field il englobe les inputs -->
+            <!-- Classe pour ajouter un séparateur entre chaque input field il englobe les inputs -->
             <div class="divide-y-2 divide-gray-400">
 
                 <!-- INPUT USERNAME -->
-                <div class="mb-4 ">
+                <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                         Nom d'utilisateur
                     </label>
 
                     <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex flex-row justify-between">
-
-                        <!-- Classe checkbox désactivée (flowbite) -->
-                        <div class="flex items-center mr-4">
-                            <input disabled id="usernameCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input disabled id="usernameCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         </div>
-
-                        <!-- Classe de l'input -->
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " id="username" type="text" placeholder="Nom d'utilisateur" data-checkbox-id="usernameCheckbox" data-placeholder="Nom d'utilisateur">
-                    
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nom d'utilisateur" data-checkbox-id="usernameCheckbox" data-placeholder="Nom d'utilisateur">
                     </div>
 
                     <!-- Div pour afficher les erreurs -->
-                    <p id="usernameError" class="text-red-400 text-sm italic bold pt-2 pb-0 font-bold">
+                    <p id="usernameError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
                         <!-- L'erreur sera générée par register.js -->
                     </p>
                 </div>
-
-
 
                 <!-- INPUT EMAIL -->
                 <div class="mb-4 pt-2">
@@ -65,25 +58,18 @@
                     </label>
 
                     <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex flex-row justify-between">
-
-                        <!-- Classe checkbox désactivée (flowbite) -->
-                        <div class="flex items-center mr-4">
-                            <input disabled id="emailCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input disabled id="emailCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         </div>
-
-                        <!-- Classe de l'input -->
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" data-checkbox-id="emailCheckbox" data-placeholder="Email">
-
                     </div>
 
                     <!-- Div pour afficher les erreurs -->
-                    <p id="emailError" class="text-red-400 text-sm italic bold pt-2 pb-0 font-bold">
+                    <p id="emailError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
                         <!-- L'erreur sera générée par register.js -->
                     </p>
                 </div>
-
-
 
                 <!-- INPUT PASSWORD -->
                 <div class="mb-4 pt-2">
@@ -92,26 +78,18 @@
                     </label>
 
                     <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex flex-row justify-between">
-
-                        <!-- Classe checkbox désactivée (flowbite) -->
-                        <div class="flex items-center mr-4">
-                            <input disabled id="passwordCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input disabled id="passwordCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         </div>
-
-                        <!-- Classe de l'input -->
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Mot de passe" data-checkbox-id="passwordCheckbox" data-placeholder="Mot de passe">
-
                     </div>
 
                     <!-- Div pour afficher les erreurs -->
-                    <p id="passwordError" class="text-red-400 text-sm italic bold pt-2 pb-0 font-bold">
+                    <p id="passwordError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
                         <!-- L'erreur sera générée par register.js -->
                     </p>
                 </div>
-
-
-
 
                 <!-- INPUT PASSWORD_CONFIRM -->
                 <div class="mb-4 pt-2">
@@ -120,34 +98,28 @@
                     </label>
 
                     <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex flex-row justify-between">
-
-                        <!-- Classe checkbox désactivée (flowbite) -->
-                        <div class="flex items-center mr-4">
-                            <input disabled id="passwordConfirmCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input disabled id="passwordConfirmCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                         </div>
-
-                        <!-- Classe de l'input -->
                         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordConfirm" type="password" placeholder="Mot de passe" data-checkbox-id="passwordConfirmCheckbox" data-placeholder="Mot de passe">
-
                     </div>
 
                     <!-- Div pour afficher les erreurs -->
-                    <p id="passwordConfirmError" class="text-red-400 text-sm italic bold pt-2 pb-0 font-bold">
+                    <p id="passwordConfirmError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
                         <!-- L'erreur sera générée par register.js -->
                     </p>
                 </div>
 
-
-                <!-- BOUTTON S'INSCRIRE -->
+                <!-- BOUTON S'INSCRIRE -->
                 <div class="flex items-center justify-between pt-8">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="submit">
                         S'inscrire
                     </button>
 
                     <!-- Div pour se connecter si l'utilisateur a déjà un compte -->
-                    <p class="text-gray-500 dark:text-gray-400 text-sm text-center mr-8">
-                        Vous avez déjà un compte ?<br><a href="pages/login.html" class="font-medium text-blue-600 underline dark:text-blue-500 hover:no-underline">Connectez-vous.</a>
+                    <p class="text-gray-500 text-sm text-center mr-8">
+                        Vous avez déjà un compte ?<br><a href="pages/login.html" class="font-medium text-blue-600 underline hover:no-underline">Connectez-vous.</a>
                     </p>
                 </div>
 
