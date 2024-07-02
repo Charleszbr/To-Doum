@@ -4,132 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO-DOUM Inscription</title>
+    <title>Document</title>
 
-    <!-- Importations CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/register.css">
 </head>
 
-<body class="bg-cover bg-no-repeat min-h-screen flex items-center justify-center" style="background-image: url('src/images/backgound_register_page.png');">
+<body class="bg-white text-gray-900 h-full overflow-hidden">
+    
 
-    <!-- Div pour afficher un message d'inscription réussie -->
-    <p id="newRegister" class="text-white text-sm italic font-bold pt-2 pb-2 bg-green-500 flex justify-center items-center hidden w-full"> 
-        <!-- Le contenu sera généré par javascript register.js -->
-    </p>
-
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- Formulaire d'inscription -->
-        <form id="registerForm" class="max-w-lg bg-white shadow-md rounded-xl px-8 pt-6 pb-8 w-full mx-auto mt-10 sm:mt-20" style="background-image: url('src/images/background_paper_register.jpg')">
-
-            <h2 class="text-3xl font-bold mt-2 text-center">TO-DOUM</h2>
-            <h1 class="text-4xl font-bold mt-2 mb-10 text-center">Inscription</h1>
-            <h3 class="text-2xl font-bold mb-4">Validez ces tâches :</h3>
-
-            <!-- Classe pour ajouter un séparateur entre chaque input field il englobe les inputs -->
-            <div class="divide-y-2 divide-gray-400">
-
-                <!-- INPUT USERNAME -->
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                        Nom d'utilisateur
-                    </label>
-
-                    <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center">
-                            <input disabled id="usernameCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        </div>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nom d'utilisateur" data-checkbox-id="usernameCheckbox" data-placeholder="Nom d'utilisateur">
-                    </div>
-
-                    <!-- Div pour afficher les erreurs -->
-                    <p id="usernameError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
-                        <!-- L'erreur sera générée par register.js -->
-                    </p>
-                </div>
-
-                <!-- INPUT EMAIL -->
-                <div class="mb-4 pt-2">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                        Email
-                    </label>
-
-                    <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center">
-                            <input disabled id="emailCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        </div>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" data-checkbox-id="emailCheckbox" data-placeholder="Email">
-                    </div>
-
-                    <!-- Div pour afficher les erreurs -->
-                    <p id="emailError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
-                        <!-- L'erreur sera générée par register.js -->
-                    </p>
-                </div>
-
-                <!-- INPUT PASSWORD -->
-                <div class="mb-4 pt-2">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        Mot de passe
-                    </label>
-
-                    <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center">
-                            <input disabled id="passwordCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        </div>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Mot de passe" data-checkbox-id="passwordCheckbox" data-placeholder="Mot de passe">
-                    </div>
-
-                    <!-- Div pour afficher les erreurs -->
-                    <p id="passwordError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
-                        <!-- L'erreur sera générée par register.js -->
-                    </p>
-                </div>
-
-                <!-- INPUT PASSWORD_CONFIRM -->
-                <div class="mb-4 pt-2">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="passwordConfirm">
-                        Confirmation mot de passe
-                    </label>
-
-                    <!-- Classe pour aligner la checkbox avec l'input field -->
-                    <div class="flex items-center space-x-4">
-                        <div class="flex items-center">
-                            <input disabled id="passwordConfirmCheckbox" type="checkbox" value="" class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
-                        </div>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="passwordConfirm" type="password" placeholder="Mot de passe" data-checkbox-id="passwordConfirmCheckbox" data-placeholder="Mot de passe">
-                    </div>
-
-                    <!-- Div pour afficher les erreurs -->
-                    <p id="passwordConfirmError" class="text-red-400 text-sm italic font-bold pt-2 pb-0">
-                        <!-- L'erreur sera générée par register.js -->
-                    </p>
-                </div>
-
-                <!-- BOUTON S'INSCRIRE -->
-                <div class="flex items-center justify-between pt-8">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        S'inscrire
-                    </button>
-
-                    <!-- Div pour se connecter si l'utilisateur a déjà un compte -->
-                    <p class="text-gray-500 text-sm text-center mr-8">
-                        Vous avez déjà un compte ?<br><a href="pages/login.html" class="font-medium text-blue-600 underline hover:no-underline">Connectez-vous.</a>
-                    </p>
-                </div>
-
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="http://127.0.0.1:5500/client/pages/accueil.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="src/images/note_13650723.png" class="h-8" alt="TO-DOUM Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TO-DOUM</span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+            <div class="flex hidden w-full md:block md:w-auto justify-end" id="navbar-default">
+                <ul class=" w-44 font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-2 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="pages/login.html" class="font-bold block py-2 px-3 text-gray-600 rounded-md hover:bg-gray-200">Connexion</a>
+                </li>
+                <li>
+                    <a href="pages/register.html" class="block py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 font-bold ">S'inscrire</a>
+                </li>
+                </ul>
             </div>
-        </form>
-    </div>
+        </div>
+    </nav>
+  
 
-    <!-- Importations JavaScript -->
+    <main class="flex flex-col items-center justify-center text-center mt-20 px-4 md:px-0 h-full">
+        <h1 class="text-4xl font-bold mb-4">Organisez enfin votre vie et votre travail.</h1>
+        <p class="text-gray-600 mb-8">Faites votre planning de la journée ou encore de la semaine afin de vous organiser au mieux.</p>
+        <a href="pages/register.html" class="bg-red-500 text-white px-6 py-3 rounded-md text-lg   hover:bg-red-600 font-bold">S'inscrire</a>
+        <div class="max-h-screen h-full w-full overflow-hidden flex justify-center mt-8">
+            <img class="object-contain max-h-full absolute" src="src/images/doodle-checklist-set-to-do-task-list-vector.jpg" alt="Image Checklists">
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('menu-button').addEventListener('click', function () {
+            var mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script type="module" src="js/register.js"></script>
-
 </body>
+
 </html>
+
+
+

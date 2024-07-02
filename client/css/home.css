@@ -1,0 +1,26 @@
+
+/* Styles spécifiques pour le modal */
+#task-modal {
+    z-index: 1000;
+}
+
+#task-modal-content {
+    max-height: calc(100vh - 20%);
+}
+
+/* Styles pour les tâches dans une liste */
+.task-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+
+.task-card .task-actions {
+    margin-top: 1rem;
+}
+
+.task-card .task-actions button {
+    margin-right: 0.5rem;
+}

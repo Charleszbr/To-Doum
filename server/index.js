@@ -8,7 +8,7 @@ const port = 3000;
 
 // Configuration avancée de CORS
 const corsOptions = {
-    origin: 'http://127.0.0.1:5500', // Remplacez par l'origine de votre application front-end
+    origin: 'http://127.0.0.1:5500', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204

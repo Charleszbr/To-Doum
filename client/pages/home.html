@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DOUM</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body class="bg-gray-100 text-gray-900 h-full">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="../src/images/note_13650723.png" class="h-8" alt="TO-DOUM Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TO-DOUM</span>
+            </a>
+
+            <div class="flex space-x-8">
+                <a id="logout-button" href="#"
+                    class="block py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-600 font-bold">Se
+                    déconnecter</a>
+                <img class="w-10" src="../src/images/avatar_7509050.png">
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex flex-col items-center justify-center mt-10 px-4 md:px-0">
+        <h1 class="text-4xl font-bold mb-4">Vos différentes listes de tâches</h1>
+        <p class="text-gray-600 mb-8 font-bold">Créez, consultez, éditez, supprimez comme bon vous semble</p>
+    </main>
+
+    <section class="flex mt-10 ml-12 flex-col">
+        <h2 class="text-2xl font-bold">Créer une liste de tâches</h2>
+        <div id="create-task-container" class="shadow-lg p-4 mb-6">
+            <button id="add-list-button" class="flex items-center bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                <span class="text-xl mr-2">+</span> Nouvelle liste de tâches
+            </button>
+            <form id="create-list-form" class="hidden mt-4 space-y-4">
+                <div>
+                    <label for="list-name" class="block text-sm font-medium text-gray-700">Nom de la liste</label>
+                    <input type="text" id="list-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                </div>
+                <div>
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600">Créer</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="lists-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Les listes de tâches créées apparaîtront ici -->
+        </div>
+    </section>
+
+    <div id="task-modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+        <div id="task-modal-content" class="bg-white p-8 rounded-lg shadow-xl max-w-2xl overflow-y-auto">
+            <!-- Contenu de la liste de tâches s'affiche ici -->
+        </div>
+    </div>
+
+    <script src="../js/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+
+</html>

@@ -121,7 +121,7 @@ registerForm.addEventListener('submit', async (e) => {
 
         // Ajout d'un délai avant la redirection
         setTimeout(function () {
-            window.location.href = 'pages/accueil.html';
+            window.location.href = 'home.html';
         }, 3000); // 3sec
 
     } catch (error) {

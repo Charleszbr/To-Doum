@@ -76,7 +76,7 @@ loginForm.addEventListener('submit', async (e) => {
 
         // Ajout d'un délai avant la redirection
         setTimeout(function () {
-            window.location.href = 'accueil.html';
+            window.location.href = 'home.html';
         }, 2000); // 2sec
 
     } catch (error) {
